@@ -4,7 +4,7 @@ import sys
 import typer
 from typer.testing import CliRunner
 
-from docs_src.first_steps import tutorial003 as mod
+from docs_src.first_steps import tutorial003_py310 as mod
 
 runner = CliRunner()
 
@@ -15,7 +15,7 @@ app.command()(mod.main)
 def test_1():
     result = runner.invoke(app, ["Camila"])
     assert result.exit_code != 0
-    assert "Missing argument 'LASTNAME'" in result.output
+    assert "Missing argument 'lastname'" in result.output
 
 
 def test_2():

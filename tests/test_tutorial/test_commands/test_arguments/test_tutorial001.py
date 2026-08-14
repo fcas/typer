@@ -3,7 +3,7 @@ import sys
 
 from typer.testing import CliRunner
 
-from docs_src.commands.arguments import tutorial001 as mod
+from docs_src.commands.arguments import tutorial001_py310 as mod
 
 app = mod.app
 
@@ -13,13 +13,13 @@ runner = CliRunner()
 def test_help_create():
     result = runner.invoke(app, ["create", "--help"])
     assert result.exit_code == 0
-    assert "create [OPTIONS] USERNAME" in result.output
+    assert "create [OPTIONS] {username}" in result.output
 
 
 def test_help_delete():
     result = runner.invoke(app, ["delete", "--help"])
     assert result.exit_code == 0
-    assert "delete [OPTIONS] USERNAME" in result.output
+    assert "delete [OPTIONS] {username}" in result.output
 
 
 def test_create():

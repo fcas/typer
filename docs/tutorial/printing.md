@@ -1,15 +1,15 @@
+# Printing and Colors
+
 You can use the normal `print()` to show information on the screen:
 
-```Python hl_lines="5"
-{!../docs_src/first_steps/tutorial001.py!}
-```
+{* docs_src/typer_app/tutorial001_py310.py hl[8] *}
 
 It will show the output normally:
 
 <div class="termy">
 
 ```console
-$ python main.py
+$ uv run python main.py World
 
 Hello World
 ```
@@ -18,22 +18,20 @@ Hello World
 
 ## Use Rich
 
-You can also display beautiful and more complex information using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>. It comes by default when you install `typer`.
+You can also display beautiful and more complex information using [Rich](https://rich.readthedocs.io/). It comes by default when you install `typer`.
 
 ### Use Rich `print`
 
 For the simplest cases, you can just import `print` from `rich` and use it instead of the standard `print`:
 
-```Python hl_lines="2  15"
-{!../docs_src/printing/tutorial001.py!}
-```
+{* docs_src/printing/tutorial001_py310.py hl[2,18] *}
 
 Just with that, **Rich** will be able to print your data with nice colors and structure:
 
 <div class="termy">
 
 ```console
-$ python main.py
+$ uv run python main.py
 
 Here's the data
 <b>{</b>
@@ -52,16 +50,14 @@ Here's the data
 
 ### Rich Markup
 
-Rich also supports a <a href="https://rich.readthedocs.io/en/stable/markup.html" class="external-link" target="_blank">custom markup syntax</a> to set colors and styles, for example:
+Rich also supports a [custom markup syntax](https://rich.readthedocs.io/en/stable/markup.html) to set colors and styles, for example:
 
-```Python hl_lines="6"
-{!../docs_src/printing/tutorial002.py!}
-```
+{* docs_src/printing/tutorial002_py310.py hl[9] *}
 
 <div class="termy">
 
 ```console
-$ python main.py
+$ uv run python main.py
 
 <font color="#F92672"><b>Alert!</b></font> <font color="#A6E22E">Portal gun</font> shooting! 💥
 ```
@@ -70,7 +66,7 @@ $ python main.py
 
 In this example you can see how to use font styles, colors, and even emojis.
 
-To learn more check out the <a href="https://rich.readthedocs.io/en/stable/markup.html" class="external-link" target="_blank">Rich docs</a>.
+To learn more check out the [Rich docs](https://rich.readthedocs.io/en/stable/markup.html).
 
 ### Rich Tables
 
@@ -80,9 +76,7 @@ When you call Rich's `print`, it automatically creates this object and uses it.
 
 But for advanced use cases, you could create a `Console` yourself.
 
-```Python hl_lines="2-3  5  9-12"
-{!../docs_src/printing/tutorial003.py!}
-```
+{* docs_src/printing/tutorial003_py310.py hl[2:3,5,12:15] *}
 
 In this example, we create a `Console`, and a `Table`. And then we can add some rows to the table, and print it.
 
@@ -91,7 +85,7 @@ If you run it, you will see a nicely formatted table:
 <div class="termy">
 
 ```console
-$ python main.py
+$ uv run python main.py
 
 ┏━━━━━━━┳━━━━━━━━━━━━┓
 ┃<b> Name  </b>┃<b> Item       </b>┃
@@ -105,9 +99,9 @@ $ python main.py
 
 Rich has many other features, as an example, you can check the docs for:
 
-* <a href="https://rich.readthedocs.io/en/stable/prompt.html" class="external-link" target="_blank">Prompt</a>
-* <a href="https://rich.readthedocs.io/en/stable/markdown.html" class="external-link" target="_blank">Markdown</a>
-* <a href="https://rich.readthedocs.io/en/stable/panel.html" class="external-link" target="_blank">Panel</a>
+* [Prompt](https://rich.readthedocs.io/en/stable/prompt.html)
+* [Markdown](https://rich.readthedocs.io/en/stable/markdown.html)
+* [Panel](https://rich.readthedocs.io/en/stable/panel.html)
 * ...and more.
 
 ### Typer and Rich
@@ -118,7 +112,7 @@ In general, **Typer** tends to be the entry point to your program, taking the fi
 
 **Rich** is useful for the parts that need to *display* information. Showing beautiful content on the screen.
 
-The best results for your command line application would be achieved combining both **Typer** and **Rich**.
+The best results for your command line application are achieved combining both **Typer** and **Rich**.
 
 ## "Standard Output" and "Standard Error"
 
@@ -136,32 +130,36 @@ And there's another "**virtual file**" called "**standard error**" that is norma
 
 But we can also "print" to "standard error". And both are shown on the terminal to the users.
 
-!!! info
-    If you use PowerShell it's quite possible that what you print to "standard error" won't be shown in the terminal.
+/// note
 
-    In PowerShell, to see "standard error" you would have to check the variable `$Error`.
+If you use PowerShell it's quite possible that what you print to "standard error" won't be shown in the terminal.
 
-    But it will work normally in Bash, Zsh, and Fish.
+In PowerShell, to see "standard error" you would have to check the variable `$Error`.
+
+But it will work normally in Bash, Zsh, and Fish.
+
+///
 
 ### Printing to "standard error"
 
 You can print to "standard error" creating a Rich `Console` with `stderr=True`.
 
-!!! tip
-    `stderr` is short for "standard error".
+/// tip
+
+`stderr` is short for "standard error".
+
+///
 
 Using `stderr=True` tells **Rich** that the output should be shown in "standard error".
 
-```Python hl_lines="4  8"
-{!../docs_src/printing/tutorial004.py!}
-```
+{* docs_src/printing/tutorial004_py310.py hl[4,11] *}
 
 When you try it in the terminal, it will probably just look the same:
 
 <div class="termy">
 
 ```console
-$ python main.py
+$ uv run python main.py
 
 Here is something written to standard error
 ```
@@ -182,12 +180,15 @@ But understanding that will come handy in the future, for example for autocomple
 
 ## Typer Echo
 
-!!! warning
-    In most of the cases, for displaying advanced information, it is recommended to use <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>.
+/// warning
 
-    You can probably skip the rest of this section. 🎉😎
+In most of the cases, for displaying advanced information, it is recommended to use [Rich](https://rich.readthedocs.io/).
 
-**Typer** also has a small utility `typer.echo()` to print information on the screen, it comes directly from Click. But normally you shouldn't need it.
+You can probably skip the rest of this section. 🎉😎
+
+///
+
+**Typer** also has a small utility `typer.echo()` to print information on the screen. But normally you shouldn't need it.
 
 For the simplest cases, you can use the standard Python `print()`.
 
@@ -195,7 +196,7 @@ And for the cases where you want to display data more beautifully, or more advan
 
 ### Why `typer.echo`
 
-`typer.echo()` (which is actually just `click.echo()`) applies some checks to try and convert binary data to strings, and other similar things.
+`typer.echo()` applies some checks to try and convert binary data to strings, and other similar things.
 
 But in most of the cases you wouldn't need it, as in modern Python strings (`str`) already support and use Unicode, and you would rarely deal with pure `bytes` that you want to print on the screen.
 
@@ -203,29 +204,33 @@ If you have some `bytes` objects, you would probably want to decode them intenti
 
 And if you want to print data with colors and other features, you are much better off with the more advanced tools in **Rich**.
 
-!!! info
-    `typer.echo()` comes directly from Click, you can read more about it in <a href="https://click.palletsprojects.com/en/7.x/quickstart/#echoing" class="external-link" target="_blank">Click's docs</a>.
-
 ### Color
 
-!!! note "Technical Details"
-    The way color works in terminals is by using some codes (ANSI escape sequences) as part of the text.
+/// note | Technical Details
 
-    So, a colored text is still just a `str`.
+The way color works in terminals is by using some codes (ANSI escape sequences) as part of the text.
 
-!!! tip
-    Again, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
+So, a colored text is still just a `str`.
+
+///
+
+/// tip
+
+Again, you are much better off using [Rich](https://rich.readthedocs.io/) for this. 😎
+
+///
 
 You can create colored strings to output to the terminal with `typer.style()`, that gives you `str`s that you can then pass to `typer.echo()`:
 
-```Python hl_lines="7  9"
-{!../docs_src/printing/tutorial005.py!}
-```
+{* docs_src/printing/tutorial005_py310.py hl[10,12] *}
 
-!!! tip
-    The parameters `fg` and `bg` receive strings with the color names for the "**f**ore**g**round" and "**b**ack**g**round" colors. You could simply pass `fg="green"` and `bg="red"`.
+/// tip
 
-    But **Typer** provides them all as variables like `typer.colors.GREEN` just so you can use autocompletion while selecting them.
+The parameters `fg` and `bg` receive strings with the color names for the "<strong>f</strong>ore<strong>g</strong>round" and "<strong>b</strong>ack<strong>g</strong>round" colors. You could simply pass `fg="green"` and `bg="red"`.
+
+But **Typer** provides them all as variables like `typer.colors.GREEN` just so you can use autocompletion while selecting them.
+
+///
 
 Check it:
 
@@ -247,19 +252,17 @@ You can pass these function arguments to `typer.style()`:
 * `reverse`: enable or disable inverse rendering (foreground becomes background and the other way round).
 * `reset`: by default a reset-all code is added at the end of the string which means that styles do not carry over.  This can be disabled to compose styles.
 
-!!! info
-    You can read more about it in <a href="https://click.palletsprojects.com/en/7.x/api/#click.style" class="external-link" target="_blank">Click's docs about `style()`</a>
-
 ### `typer.secho()` - style and print
 
-!!! tip
-    In case you didn't see above, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
+/// tip
+
+In case you didn't see above, you are much better off using [Rich](https://rich.readthedocs.io/) for this. 😎
+
+///
 
 There's a shorter form to style and print at the same time with `typer.secho()` it's like `typer.echo()` but also adds style like `typer.style()`:
 
-```Python hl_lines="5"
-{!../docs_src/printing/tutorial006.py!}
-```
+{* docs_src/printing/tutorial006_py310.py hl[8] *}
 
 Check it:
 

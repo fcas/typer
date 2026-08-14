@@ -1,26 +1,15 @@
+# Password CLI Option and Confirmation Prompt
+
 Apart from having a prompt, you can make a *CLI option* have a `confirmation_prompt=True`:
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="7"
-    {!> ../docs_src/options/password/tutorial001_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="5"
-    {!> ../docs_src/options/password/tutorial001.py!}
-    ```
+{* docs_src/options/password/tutorial001_an_py310.py hl[11] *}
 
 And the CLI program will ask for confirmation:
 
 <div class="termy">
 
 ```console
-$ python main.py Camila
+$ uv run python main.py Camila
 
 // It prompts for the email
 # Email: $ camila@example.com
@@ -41,27 +30,14 @@ You can achieve the same using `hide_input=True`.
 
 And if you combine it with `confirmation_prompt=True` you can easily receive a password with double confirmation:
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="8"
-    {!> ../docs_src/options/password/tutorial002_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="6-8"
-    {!> ../docs_src/options/password/tutorial002.py!}
-    ```
+{* docs_src/options/password/tutorial002_an_py310.py hl[12] *}
 
 Check it:
 
 <div class="termy">
 
 ```console
-$ python main.py Camila
+$ uv run python main.py Camila
 
 // It prompts for the password, but doesn't show anything when you type
 # Password: $

@@ -18,8 +18,22 @@ The end
 
 **Commands**:
 
-* `sub`
 * `top`: Top command
+* `sub`
+
+## `multiapp top`
+
+Top command
+
+**Usage**:
+
+```console
+$ multiapp top [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
 
 ## `multiapp sub`
 
@@ -35,23 +49,9 @@ $ multiapp sub [OPTIONS] COMMAND [ARGS]...
 
 **Commands**:
 
-* `bye`: Say bye
 * `hello`: Say Hello
 * `hi`: Say Hi
-
-### `multiapp sub bye`
-
-Say bye
-
-**Usage**:
-
-```console
-$ multiapp sub bye [OPTIONS]
-```
-
-**Options**:
-
-* `--help`: Show this message and exit.
+* `bye`: Say bye
 
 ### `multiapp sub hello`
 
@@ -65,8 +65,8 @@ $ multiapp sub hello [OPTIONS]
 
 **Options**:
 
-* `--name TEXT`: [default: World]
-* `--age INTEGER`: The age of the user  [default: 0]
+* `--name <str>`: [default: World]
+* `--age <int>`: The age of the user  [default: 0]
 * `--help`: Show this message and exit.
 
 ### `multiapp sub hi`
@@ -76,25 +76,25 @@ Say Hi
 **Usage**:
 
 ```console
-$ multiapp sub hi [OPTIONS] [USER]
+$ multiapp sub hi [OPTIONS] [user]
 ```
 
 **Arguments**:
 
-* `[USER]`: The name of the user to greet  [default: World]
+* `user`: The name of the user to greet  [default: World]
 
 **Options**:
 
 * `--help`: Show this message and exit.
 
-## `multiapp top`
+### `multiapp sub bye`
 
-Top command
+Say bye
 
 **Usage**:
 
 ```console
-$ multiapp top [OPTIONS]
+$ multiapp sub bye [OPTIONS]
 ```
 
 **Options**:

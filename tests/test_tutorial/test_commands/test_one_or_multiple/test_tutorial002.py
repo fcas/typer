@@ -3,7 +3,7 @@ import sys
 
 from typer.testing import CliRunner
 
-from docs_src.commands.one_or_multiple import tutorial002 as mod
+from docs_src.commands.one_or_multiple import tutorial002_py310 as mod
 
 app = mod.app
 
@@ -14,7 +14,7 @@ def test_help():
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     assert "Creates a single user Hiro Hamada." in result.output
-    assert "In the next version it will create 5 users more." in result.output
+    assert "In the next version it will create 5 more users." in result.output
     assert "Commands" in result.output
     assert "create" in result.output
 

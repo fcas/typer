@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import pytest
 import typer
 from typer.testing import CliRunner
@@ -8,7 +10,6 @@ from typer.utils import (
     MultipleTyperAnnotationsError,
     _split_annotation_from_typer_annotations,
 )
-from typing_extensions import Annotated
 
 runner = CliRunner()
 
@@ -29,8 +30,7 @@ def test_forbid_default_value_in_annotated_argument():
     # This test case only works with `typer.Argument`. `typer.Option` uses positionals
     # for param_decls too.
     @app.command()
-    def cmd(my_param: Annotated[str, typer.Argument("foo")]):
-        ...  # pragma: no cover
+    def cmd(my_param: Annotated[str, typer.Argument("foo")]): ...  # pragma: no cover
 
     with pytest.raises(AnnotatedParamWithDefaultValueError) as excinfo:
         runner.invoke(app)
@@ -64,8 +64,7 @@ def test_forbid_annotated_param_and_default_param(param, param_info_type):
     app = typer.Typer()
 
     @app.command()
-    def cmd(my_param: Annotated[str, param()] = param("foo")):
-        ...  # pragma: no cover
+    def cmd(my_param: Annotated[str, param()] = param("foo")): ...  # pragma: no cover
 
     with pytest.raises(MixedAnnotatedAndDefaultStyleError) as excinfo:
         runner.invoke(app)
@@ -83,8 +82,7 @@ def test_forbid_multiple_typer_params_in_annotated():
     @app.command()
     def cmd(
         my_param: Annotated[str, typer.Argument(), typer.Argument()],
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(MultipleTyperAnnotationsError) as excinfo:
         runner.invoke(app)
@@ -121,8 +119,7 @@ def test_forbid_default_factory_and_default_value_in_annotated(param, param_info
     @app.command()
     def cmd(
         my_param: Annotated[str, param(default_factory=make_string)] = "hello",
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(DefaultFactoryAndDefaultValueError) as excinfo:
         runner.invoke(app)
@@ -171,8 +168,7 @@ def test_forbid_default_and_default_factory_with_default_param(param, param_info
     @app.command()
     def cmd(
         my_param: str = param("hi", default_factory=make_string),
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(DefaultFactoryAndDefaultValueError) as excinfo:
         runner.invoke(app)

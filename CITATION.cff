@@ -12,11 +12,12 @@ authors:
     family-names: Ramírez
     email: tiangolo@gmail.com
 identifiers:
-repository-code: 'https://github.com/tiangolo/typer'
+repository-code: 'https://github.com/fastapi/typer'
 url: 'https://typer.tiangolo.com'
 abstract: >-
   Typer, build great CLIs. Easy to code. Based on Python type hints.
 keywords:
   - typer
-  - click
+  - cli
+  - python
 license: MIT

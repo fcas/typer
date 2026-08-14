@@ -4,5 +4,6 @@ set -e
 set -x
 
 mypy typer
-ruff check typer tests docs_src
-ruff format typer tests docs_src --check
+ty check typer
+ruff check typer tests docs_src scripts
+ruff format typer tests docs_src scripts --check

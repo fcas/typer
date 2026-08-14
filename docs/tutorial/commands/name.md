@@ -1,3 +1,5 @@
+# Custom Command Name
+
 By default, the command names are generated from the function name.
 
 So, if your function is something like:
@@ -15,16 +17,14 @@ And what if you wanted the command to still be named `create`?
 
 For this, you can set the name of the command in the first parameter for the `@app.command()` decorator:
 
-```Python hl_lines="6  11"
-{!../docs_src/commands/name/tutorial001.py!}
-```
+{* docs_src/commands/name/tutorial001_py310.py hl[6,11] *}
 
 Now, even though the functions are named `cli_create_user()` and `cli_delete_user()`, the commands will still be named `create` and `delete`:
 
 <div class="termy">
 
 ```console
-$ python main.py --help
+$ uv run python main.py --help
 
 Usage: main.py [OPTIONS] COMMAND [ARGS]...
 
@@ -38,7 +38,7 @@ Commands:
   delete
 
 // Test it
-$ python main.py create Camila
+$ uv run python main.py create Camila
 
 Creating user: Camila
 ```
